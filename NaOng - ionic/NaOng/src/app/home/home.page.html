@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row align-items-center> <!-- Alinha os itens verticalmente -->
+        <ion-col size="auto"> <!-- Tamanho automático para a imagem -->
+          <ion-img src="../../assets/imagens/logo.jpg" style="width: 80px; height: 50px;"></ion-img>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-title style="font-size: xx-large;">NAONG</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row align-items-center> <!-- Alinha os itens verticalmente -->
+      <ion-col size="auto">
+        <ion-button (click)="showDoador()">
+          <ion-icon slot="start" name="person-add"></ion-icon>
+          Doador
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto" *ngIf="mestre">
+        <ion-button (click)="showOng()">
+          <ion-icon slot="start" name="globe"></ion-icon>
+          Ong
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button (click)="showRegistro()">
+          <ion-icon slot="start" name="heart"></ion-icon>
+          Registro
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>
+  <br>
+  <ion-title>
+    Lista de ONGs
+  </ion-title>
+
+  <ion-list *ngIf="mestre">
+    <ion-item *ngFor="let ong of listOng" (click)="editaOng(ong.id)">
+      <ion-label style="border: 1px solid blue; white-space: normal;      word-wrap: break-word;">
+        Código: {{ ong.id }}
+        <br>
+        Nome: {{ ong.nome }}
+        <br>
+        Endereço: {{ ong.endereco }}
+        <br>
+        Pedido: {{ ong.pedido }}
+        <br>
+        <ion-button (click)="delete(ong.id)"><ion-icon name="trash"></ion-icon> Excluir</ion-button>
+        <br>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!mestre">
+    <ion-item *ngFor="let ong of listOng">
+      <ion-label style="border: 1px solid blue; white-space: normal;      word-wrap: break-word;">
+        Código: {{ ong.id }}
+        <br>
+        Nome: {{ ong.nome }}
+        <br>
+        Endereço: {{ ong.endereco }}
+        <br>
+        Pedido: {{ ong.pedido }}
+        <br>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" style="font-size: small;">
+      Direitos reservados para NaOng - 2023
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

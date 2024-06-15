@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">CPF</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="login()">Entrar</ion-button>
+  <div *ngIf="showUserNotFoundError" style="color: red; text-align: center;">Usuário não encontrado</div>
+  <br>
+  <span (click)="loginNovo()" style="text-decoration: underline; cursor: pointer; display: block; text-align: center; font-size: 18px; color: blue;">Cadastrar</span>
+  
+  <br>
+  <br>
+  <br>
+  <ion-img src="../../assets/imagens/logo.jpg" style="margin-left: 5%; width: 90%;  object-position: center;"></ion-img>
+
+</ion-content>

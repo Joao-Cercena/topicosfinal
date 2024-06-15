@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">ONG</ion-label>
+      <ion-select [(ngModel)]="id_ong">
+        <ion-select-option *ngFor="let ong of listOng" [value]="ong.id"
+          expand="full">{{ong.nome}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input type="text" [(ngModel)]="descricao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Setor</ion-label>
+      <ion-input type="text" [(ngModel)]="setor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Data</ion-label>
+      <ion-input type="datetime-local" [(ngModel)]="data"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input type="number" step="any" [(ngModel)]="valor"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button (click)="cadastrar()"><ion-icon name="add-circle"></ion-icon> Cadastrar</ion-button> <!-- VER PRA SALVAR -->
+  <ion-button (click)="deletar()"><ion-icon name="trash"></ion-icon> Deletar</ion-button> 
+  <ion-button (click)="showHome()"><ion-icon name="home"></ion-icon> Home</ion-button>
+
+  <br><br>
+  <ion-title>
+    Lista de Registros
+  </ion-title>
+  <br><br>
+  <ion-list>
+    <ion-item *ngFor="let registro of listRegistro" (click)="editaRegistro(registro.id)">
+      
+      <ion-label style="border: 1px solid blue; white-space: normal;      word-wrap: break-word;">
+        Código: {{ registro.id }}
+        <br>
+        Descrição: {{ registro.descricao }}
+        <br>
+        Data: {{ registro.data | date: 'dd/MM/yyyy HH:mm' }}
+        <br>
+        Setor: {{ registro.setor }}
+        <br>
+        Valor: {{ registro.valor }}
+      </ion-label>
+  
+    </ion-item>
+  </ion-list>
+</ion-content>

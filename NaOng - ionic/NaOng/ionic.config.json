@@ -1,0 +1,7 @@
+{
+  "name": "NaOng",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

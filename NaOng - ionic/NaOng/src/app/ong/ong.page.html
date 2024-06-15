@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ONG</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">CNPJ</ion-label>
+        <ion-input type="text" [(ngModel)]="cnpj" (ionChange)="formatarCNPJ()" maxlength="18"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Endereço</ion-label>
+        <ion-input type="text" [(ngModel)]="endereco"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Pedido</ion-label>
+        <ion-input type="text" [(ngModel)]="pedido"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ativar/Desativar</ion-label>
+        <ion-toggle [(ngModel)]="status"></ion-toggle>
+      </ion-item>
+
+    </ion-list>
+
+
+  </ion-list>
+
+  <ion-button (click) = "cadastrar()"><ion-icon name="add-circle"></ion-icon> Cadastrar</ion-button>
+  <ion-button (click)="showHome()"><ion-icon name="home"></ion-icon> Home</ion-button>
+</ion-content>

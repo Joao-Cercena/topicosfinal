@@ -1,0 +1,81 @@
+<ion-header [translucent]="true"> 
+  <ion-toolbar>
+    <ion-title>Doador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"> 
+    <ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text" [(ngModel)]="nome"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input type="text" [(ngModel)]="cpf" (ionChange)="formatarCPF()" maxlength="14"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="floating">Data Nascimento</ion-label>
+          <ion-input type="date" [(ngModel)]="dataNascimento"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="senha"></ion-input>
+        </ion-item>
+
+        </ion-list>
+      </ion-list>
+
+
+    <ion-grid>
+      <ion-row align-items-center> <!-- Alinha os itens verticalmente -->
+        <ion-col size="auto">
+          <ion-button (click)="cadastrar()">
+            <ion-icon slot="start" name="add-circle"></ion-icon>
+            Cadastrar
+          </ion-button>
+        </ion-col>
+        <ion-col size="auto" *ngIf="idRecebido > 0">
+          <ion-button (click)="showHome()">
+            <ion-icon slot="start" name="home"></ion-icon>
+            Home
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <div *ngIf = "mestre"> 
+      <br><br>    
+      <ion-title>
+        Lista de Doadores
+      </ion-title>
+      <ion-list>
+        <ion-item *ngFor="let doador of listDoador">
+          <ion-label style = "border: 1px solid blue">
+            Código: {{ doador.id }}
+            <br>
+            Nome: {{ doador.nome }}
+            <br>
+            CPF: {{ doador.cpf }}
+            <br>
+            Pedido: {{ doador.pedido }}
+            <br>
+            Email: {{ doador.email }}
+            <br>
+            <ion-button (click)="deletar(doador.id)"><ion-icon name="trash"></ion-icon> Deletar</ion-button> 
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  
+</ion-content>

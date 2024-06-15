@@ -1,0 +1,89 @@
+{
+  "doador": [
+    {
+      "nome": "usuario mestre",
+      "cpf": "10399991905",
+      "email": "mestre@gmail.com",
+      "dataNascimento": "1999-01-01",
+      "senha": "123",
+      "mestre": "1",
+      "id": 1
+    },
+    {
+      "nome": "doador 1",
+      "cpf": "08095619990",
+      "email": "teste@gmail.com",
+      "dataNascimento": "2001-06-06",
+      "senha": "123",
+      "mestre": "",
+      "id": 2
+    }
+  ],
+  "ong": [
+    {
+      "nome": "asilo sao vicente",
+      "email": "teste@email.com",
+      "cnpj": "20145874596325",
+      "endereco": "rua geral",
+      "pedido": "comida não pereciveis(arroz, oleo)",
+      "status": true,
+      "id": 1
+    },
+    {
+      "nome": "ong de cachorros",
+      "email": "cachorro@gmail.com",
+      "cnpj": "32569874125874",
+      "endereco": "rua geral - centro, Criciuma",
+      "pedido": "ração de cachorro, tecidos, dinheiro para cirugia dos animais",
+      "status": true,
+      "id": 2
+    }
+  ],
+  "registro": [
+    {
+      "id_ong": 1,
+      "id_doador": "1",
+      "descricao": "doação de arroz",
+      "setor": "comida",
+      "data": "2023-12-12T05:12",
+      "valor": 10,
+      "id": 1
+    },
+    {
+      "id_ong": 1,
+      "id_doador": "1",
+      "descricao": "roupas masculinas",
+      "setor": "roupas",
+      "data": "2023-12-04T05:06",
+      "valor": 6,
+      "id": 2
+    },
+    {
+      "id_ong": 1,
+      "id_doador": "2",
+      "descricao": "doação de cestas basicas",
+      "setor": "comidas",
+      "data": "2023-12-25T12:00",
+      "valor": 6,
+      "id": 3
+    },
+    {
+      "id_ong": 1,
+      "id_doador": "2",
+      "descricao": "doação",
+      "setor": "comida",
+      "data": "2023-06-12T12:58",
+      "valor": 3,
+      "id": 4
+    },
+    {
+      "id_ong": 2,
+      "id_doador": "1",
+      "descricao": "doação de tecidos para fazer cama, roupas para cachorros no inverno",
+      "setor": "roupas",
+      "data": "2023-04-12T12:59",
+      "valor": 20,
+      "id": 5
+    }
+  ]
+}

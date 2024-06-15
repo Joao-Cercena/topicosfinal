@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>setor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click) = "cadastrar()">Cadastrar</ion-button>
+  <ion-button (click)="showHome()">Home</ion-button>
+  
+</ion-content>
