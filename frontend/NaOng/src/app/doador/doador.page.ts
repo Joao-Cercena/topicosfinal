@@ -25,7 +25,7 @@ export class DoadorPage {
     this.activatedRoute.queryParams.subscribe(params => {
       this.idRecebido = params['id'];
       console.log(this.idRecebido);
-      this.http.get<any>(`http://localhost:3000/doador?id=${this.idRecebido}`).subscribe(
+      this.http.get<any>(`localhost:3000/doadores/${this.idRecebido}`).subscribe(
         (dados) => {
           console.log(dados)
           this.nome = dados[0].nome;
@@ -40,7 +40,7 @@ export class DoadorPage {
       );//teste
     }
     );
-    this.http.get<any>('http://localhost:3000/doador').subscribe(
+    this.http.get<any>('localhost:3000/doadores').subscribe(
       (data) => {
         // Verifica se as credenciais correspondem a algum usuário
         const foundUser = data.find((user: any) => {
@@ -73,19 +73,19 @@ export class DoadorPage {
 
   listar() {
     // Envia os dados para o servidor JSON
-    this.http.get('http://localhost:3000/doador').subscribe(
+    this.http.get('localhost:3000/doadores').subscribe(
       (data) => {
         this.listDoador = data;
       },
       (error) => {
-        console.error('Erro ao buscar doador:', error);
+        console.error('Erro ao buscar doadores:', error);
       }
     );
   }
 
   deletar(doadorExcluir: any) {
     if (doadorExcluir != 1) {
-      this.http.delete(`http://localhost:3000/doador/${doadorExcluir}`).subscribe(
+      this.http.delete(`localhost:3000/doadores/${doadorExcluir}`).subscribe(
         (data) => {
           console.log('Doador excluido com sucesso:', data);
           this.showHome();
@@ -118,7 +118,9 @@ export class DoadorPage {
 
       if (this.idRecebido < 1) {
         // Se idRecebido for menor que 1, cadastra um novo doador
-        this.http.post('http://localhost:3000/doador', novoDoador).subscribe(
+        console.log("entrou no front");
+        console.log(novoDoador);
+        this.http.post('http://localhost:3000/doadores', novoDoador).subscribe(
           (data) => {
             console.log('Doador cadastrado com sucesso:', data);
             this.navCtrl.navigateBack('login'); // Redireciona para a página 'home' após o cadastro
@@ -130,7 +132,7 @@ export class DoadorPage {
       } else {
         if (this.idRecebido != 1) { //para deixar proibido atualizar usuario 1
           // Se idRecebido for maior ou igual a 1, faz um PUT para atualizar o doador
-          this.http.put(`http://localhost:3000/doador/${this.idRecebido}`, novoDoador).subscribe(
+          this.http.put(`localhost:3000/doadores/${this.idRecebido}`, novoDoador).subscribe(
             (data) => {
               console.log('Doador atualizado com sucesso:', data);
               //this.navCtrl.navigateBack('home'); // Redireciona para a página 'home' após a atualização

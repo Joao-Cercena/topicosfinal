@@ -45,6 +45,7 @@ export class DoadorService {
   }
 
   async create(doadorData: DoadorEntity): Promise<DoadorEntity> {
+    console.log("entrou no back service");
     await this.validateDoadorData(doadorData);
     const newDoador = this.doadorRepository.create(doadorData);
     return this.doadorRepository.save(newDoador);

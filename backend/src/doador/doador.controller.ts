@@ -26,6 +26,7 @@ export class DoadorController {
 
   @Post()
   async create(@Body() doadorData: DoadorEntity): Promise<DoadorEntity> {
+    console.log("entrou no back controller");
     return this.doadorService.create(doadorData);
   }
 

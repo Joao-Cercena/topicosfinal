@@ -17,5 +17,9 @@ export class DoadorEntity {
     @Column({ type: 'date', name: 'data_nascimento', nullable: true })
     dataNascimento: Date;
 
+    @Column({ length:100})
+    senha: string;
 
+    @Column({ length:100})
+    mestre: string;
 }
