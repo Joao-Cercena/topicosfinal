@@ -1,4 +1,3 @@
-
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { OngsEntity } from 'src/ongs/ongs.entity';
 import { SetorEntity } from 'src/setor/setor.entity';
@@ -10,10 +9,8 @@ export const dataSourceOptions: DataSourceOptions = {
     username: 'postgres',
     password: 'admin',
     port: 5432,
-    entities: ['dist/**/*.entity.js'],
+    entities: [OngsEntity, SetorEntity, DoadorEntity],
     migrations: ['dist/db/migration/*.js'],
-    synchronize: true,
-    logging: true,
 }
 
 export default new DataSource(dataSourceOptions);
