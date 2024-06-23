@@ -77,7 +77,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/ongs/:id",
+					"raw": "http://localhost:3000/ongs/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -85,13 +85,7 @@
 					"port": "3000",
 					"path": [
 						"ongs",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": ""
-						}
+						""
 					]
 				}
 			},
@@ -112,7 +106,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/ongs/0902a388-9cf2-4561-af66-7261f9553f3e",
+					"raw": "http://localhost:3000/ongs/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -120,7 +114,7 @@
 					"port": "3000",
 					"path": [
 						"ongs",
-						"0902a388-9cf2-4561-af66-7261f9553f3e"
+						""
 					]
 				}
 			},
@@ -132,7 +126,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/ongs/cfb61e10-66a6-4656-b981-b36adec8657a",
+					"raw": "http://localhost:3000/ongs/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -140,144 +134,7 @@
 					"port": "3000",
 					"path": [
 						"ongs",
-						"cfb61e10-66a6-4656-b981-b36adec8657a"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Setor Create",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Nome do setor já existe\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(pm.response.code).to.not.equal(400, \"Um setor com esse nome já existe\");\r",
-							"    pm.expect(jsonData.message).to.not.equal(\"Um setor com esse nome já existe\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Nome do setor comprimento mínimo\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(pm.response.code).to.not.equal(400, \"O nome do setor deve ter pelo menos 3 caracteres\");\r",
-							"    pm.expect(jsonData.message).to.not.equal(\"O nome do setor deve ter pelo menos 3 caracteres\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"limpeza\",\r\n  \"ativo\": \"A\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/setor",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"setor"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Setor Read",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/setor/609a8898-0e6b-453f-a7c1-92edac134e99",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"setor",
-						"609a8898-0e6b-453f-a7c1-92edac134e99"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Setor Update",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Setor não pode ser inativado enquanto houver ONGs associadas\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(pm.response.code).to.not.equal(400, \"O setor não pode ser inativado enquanto houver ONGs associadas\");\r",
-							"    pm.expect(jsonData.message).to.not.equal(\"O setor não pode ser inativado enquanto houver ONGs associadas\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Higiene carro\",\r\n  \"ativo\": \"A\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/setor/609a8898-0e6b-453f-a7c1-92edac134e99",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"setor",
-						"609a8898-0e6b-453f-a7c1-92edac134e99"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Setor Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/setor/609a8898-0e6b-453f-a7c1-92edac134e99",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"setor",
-						"609a8898-0e6b-453f-a7c1-92edac134e99"
+						""
 					]
 				}
 			},
@@ -345,7 +202,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/doadores/14de42ac-6ecc-4908-9ee1-98aa2652a0b7",
+					"raw": "http://localhost:3000/doadores/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -353,7 +210,7 @@
 					"port": "3000",
 					"path": [
 						"doadores",
-						"14de42ac-6ecc-4908-9ee1-98aa2652a0b7"
+						""
 					]
 				}
 			},
@@ -374,7 +231,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/doadores/14de42ac-6ecc-4908-9ee1-98aa2652a0b7",
+					"raw": "http://localhost:3000/doadores/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -382,7 +239,7 @@
 					"port": "3000",
 					"path": [
 						"doadores",
-						"14de42ac-6ecc-4908-9ee1-98aa2652a0b7"
+						""
 					]
 				}
 			},
@@ -394,7 +251,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/doadores/14de42ac-6ecc-4908-9ee1-98aa2652a0b7",
+					"raw": "http://localhost:3000/doadores/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -402,7 +259,141 @@
 					"port": "3000",
 					"path": [
 						"doadores",
-						"14de42ac-6ecc-4908-9ee1-98aa2652a0b7"
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registro Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Nome único erro\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    if (responseJson.error === 'Uma ONG com esse nome já existe.') {\r",
+							"        pm.expect(responseJson.error).to.eql('Uma ONG com esse nome já existe.');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CNPJ único erro\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    if (responseJson.error === 'Uma ONG com esse CNPJ já existe.') {\r",
+							"        pm.expect(responseJson.error).to.eql('Uma ONG com esse CNPJ já existe.');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Email único erro\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    if (responseJson.error === 'Um cadastro com esse e-mail já existe.') {\r",
+							"        pm.expect(responseJson.error).to.eql('Um cadastro com esse e-mail já existe.');\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"roupas\",\r\n  \"data_registro\": \"2024-06-23 17:20:00\",\r\n  \"valor\" : 50,\r\n  \"ongsId\": \"3a148dec-55fc-4950-8d7f-86428075022f\",\r\n  \"doadorId\": \"03c9661e-dc84-4266-8dd7-1aa5ded29339\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registro Read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/registro/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registro",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registro Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"comida\",\r\n  \"data_registro\": \"2024-06-25 17:20:00\",\r\n  \"valor\" : 50,\r\n  \"ongsId\": \"3a148dec-55fc-4950-8d7f-86428075022f\",\r\n  \"doadorId\": \"03c9661e-dc84-4266-8dd7-1aa5ded29339\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/registro/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registro",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registro Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/registro/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registro",
+						""
 					]
 				}
 			},
