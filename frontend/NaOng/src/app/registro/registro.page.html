@@ -22,11 +22,6 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Setor</ion-label>
-      <ion-input type="text" [(ngModel)]="setor"></ion-input>
-    </ion-item>
-
-    <ion-item>
       <ion-label position="floating">Data</ion-label>
       <ion-input type="datetime-local" [(ngModel)]="data"></ion-input>
     </ion-item>
@@ -56,8 +51,6 @@
         Descrição: {{ registro.descricao }}
         <br>
         Data: {{ registro.data | date: 'dd/MM/yyyy HH:mm' }}
-        <br>
-        Setor: {{ registro.setor }}
         <br>
         Valor: {{ registro.valor }}
       </ion-label>

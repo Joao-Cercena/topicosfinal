@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { OngsModule } from './ongs/ongs.module';
-import { SetorModule } from './setor/setor.module';
 import { DoadorModule } from './doador/doador.module';
 import { OngsEntity } from './ongs/ongs.entity';
-import { SetorEntity } from './setor/setor.entity';
 import { DoadorEntity } from './doador/doador.entity';
+import { RegistroModule } from './registro/registro.module';
+import { RegistroEntity } from './registro/registro.entity';
 
 @Module({
   imports: [
@@ -20,14 +20,14 @@ import { DoadorEntity } from './doador/doador.entity';
         username: configService.get<string>('DATABASE_USERNAME', 'postgres'),
         password: configService.get<string>('DATABASE_PASSWORD', 'admin'),
         database: configService.get<string>('DATABASE_NAME', 'postgres'),
-        entities: [OngsEntity, SetorEntity, DoadorEntity],
+        entities: [OngsEntity, DoadorEntity, RegistroEntity],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
     OngsModule,
-    SetorModule,
     DoadorModule,
+    RegistroModule,
   ],
 })
 export class AppModule {}

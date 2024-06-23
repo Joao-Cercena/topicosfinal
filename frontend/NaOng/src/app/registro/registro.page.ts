@@ -13,7 +13,6 @@ import { AlertController } from '@ionic/angular';
 export class RegistroPage {
   id_ong: number = 0;
   descricao: string = '';
-  setor: string = '';
   data: string = '';
   listOng: any = [];
   idRecebido: any;
@@ -30,11 +29,10 @@ export class RegistroPage {
 
         this.http.get<any>(`http://localhost:3000/registro?id=${this.id_registro}`).subscribe(
           (dados) => {
-            this.data = dados[0].data;
-            this.id_ong = dados[0].id_ong;
+            this.data = this.formatDateForInput(dados[0].dataRegistro);
+            this.id_ong = dados[0].ongsId;
             this.descricao = dados[0].descricao;
             this.valor = dados[0].valor;
-            this.setor = dados[0].setor;
 
           },
           (error) => {
@@ -67,15 +65,14 @@ export class RegistroPage {
 
   cadastrar() {
     const novoRegistro = {
-      id_ong: this.id_ong,
-      id_doador: this.idRecebido,
+      ongsId: this.id_ong,
+      doadorId: this.idRecebido,
       descricao: this.descricao,
-      setor: this.setor,
-      data: this.data,
+      dataRegistro: this.data,
       valor: this.valor,
     };
 
-    if (!this.id_ong || !this.idRecebido || !this.descricao || !this.setor || !this.data) {
+    if (!this.id_ong || !this.idRecebido || !this.descricao || !this.data) {
       this.alertController.create({
         header: 'AVISO!',
         message: 'Digite todos os campos!',
@@ -87,6 +84,7 @@ export class RegistroPage {
 
       // Envia os dados para o servidor JSON
       if (!this.id_registro) {
+        console.log(novoRegistro);
         this.http.post('http://localhost:3000/registro', novoRegistro).subscribe(
           (data) => {
             console.log('Registro cadastrado com sucesso:', data);
@@ -147,7 +145,7 @@ export class RegistroPage {
 
   listarOng() {
     // Envia os dados para o servidor JSON
-    this.http.get('http://localhost:3000/ong').subscribe(
+    this.http.get('http://localhost:3000/ongs').subscribe(
       (data) => {
         this.listOng = data;
       },
@@ -168,5 +166,17 @@ export class RegistroPage {
     );
   }
 
+  formatDateForInput(dbDate: string): string {
+    const date = new Date(dbDate);
+    const pad = (n: number) => n < 10 ? '0' + n : n;
+    
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
 }
 

@@ -1,6 +1,5 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { OngsEntity } from 'src/ongs/ongs.entity';
-import { SetorEntity } from 'src/setor/setor.entity';
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'postgres',

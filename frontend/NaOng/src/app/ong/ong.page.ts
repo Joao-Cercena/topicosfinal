@@ -27,7 +27,7 @@ export class OngPage implements OnInit {
       if (params['idOng']) {
         this.idOng = params['idOng'];
 
-        this.http.get<any>(`http://localhost:3000/ong?id=${this.idOng}`).subscribe(
+        this.http.get<any>(`http://localhost:3000/ongs?id=${this.idOng}`).subscribe(
           (dados) => {
             console.log(dados)
             this.nome = dados[0].nome;
@@ -64,13 +64,14 @@ export class OngPage implements OnInit {
   }
 
   cadastrar() {
+   
     const novoOng = {
       nome: this.nome,
       email: this.email,
       cnpj: this.cnpj.replace(/\D/g, ''), // Remove caracteres não numéricos do CNPJ
       endereco: this.endereco,
       pedido: this.pedido,
-      status: this.status,
+      ativo: this.status ? 'A' : 'I',
     };
 
     if (!this.nome || !this.email || !this.cnpj || !this.endereco || !this.pedido) {
@@ -84,7 +85,7 @@ export class OngPage implements OnInit {
     } else {
       if (this.idOng < 1 || !this.idOng) {
         // Se idRecebido for menor que 1, cadastra uma nova ONG
-        this.http.post('http://localhost:3000/ong', novoOng).subscribe(
+        this.http.post('http://localhost:3000/ongs', novoOng).subscribe(
           (data) => {
             console.log('Ong cadastrada com sucesso:', data);
             this.showHome();
@@ -95,7 +96,7 @@ export class OngPage implements OnInit {
         );
       } else {
         // Se idRecebido for maior ou igual a 1, faz um PUT para atualizar a ONG
-        this.http.put(`http://localhost:3000/ong/${this.idOng}`, novoOng).subscribe(
+        this.http.put(`http://localhost:3000/ongs/${this.idOng}`, novoOng).subscribe(
           (data) => {
             console.log('Ong atualizada com sucesso:', data);
             this.showHome();

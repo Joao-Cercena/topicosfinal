@@ -18,7 +18,7 @@ export class HomePage {
     this.activatedRoute.queryParams.subscribe(params => {
       this.idRecebido = params['id'];
     });
-    this.http.get<any>('http://localhost:3000/doador').subscribe(
+    this.http.get<any>('http://localhost:3000/doadores').subscribe(
       (data) => {
         // Verifica se as credenciais correspondem a algum usuário
         const foundUser = data.find((user: any) => {
@@ -58,7 +58,7 @@ export class HomePage {
   }
 
   delete(ongExcluir: any) {
-    this.http.delete(`http://localhost:3000/ong/${ongExcluir}`).subscribe(
+    this.http.delete(`http://localhost:3000/ongs/${ongExcluir}`).subscribe(
       (data) => {
         console.log('Ong excluido com sucesso:', data);
         this.alertController.create({
@@ -85,7 +85,7 @@ export class HomePage {
   listar() {
     // Envia os dados para o servidor JSON
     if (this.mestre) {
-      this.http.get('http://localhost:3000/ong').subscribe(
+      this.http.get('http://localhost:3000/ongs').subscribe(
         (data) => {
           this.listOng = data;
         },
@@ -94,7 +94,7 @@ export class HomePage {
         }
       );
     } else {
-      this.http.get('http://localhost:3000/ong?status=true').subscribe(
+      this.http.get('http://localhost:3000/ongs?status=true').subscribe(
         (data) => {
           this.listOng = data;
         },

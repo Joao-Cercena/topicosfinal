@@ -18,7 +18,7 @@ export class LoginPage {
  
   login() {
     // Faz a solicitação HTTP para buscar os usuários
-    this.http.get<any>('http://localhost:3000/doador').subscribe(
+    this.http.get<any>('http://localhost:3000/doadores').subscribe(
       (data) => {
         // Verifica se as credenciais correspondem a algum usuário
         const foundUser = data.find((user: any) => {
@@ -32,7 +32,6 @@ export class LoginPage {
             relativeTo: this.activatedRoute.parent // Ensure the correct navigation context
           });
         } else {
-          console.log('Credenciais inválidas');
           this.showUserNotFoundError = true; // Ativa a mensagem de erro
         }
       },

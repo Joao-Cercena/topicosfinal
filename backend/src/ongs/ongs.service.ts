@@ -27,7 +27,6 @@ import {
     async findById(id: string): Promise<OngsEntity> {
       const findOne = await this.ongsRepository.findOne({
         where: { id },
-        relations: { setor: true },
       });
       if (!findOne) {
         throw new NotFoundException('Ong não encontrado com o id ' + id);
@@ -107,4 +106,4 @@ import {
     }
     
     
-  }
+}

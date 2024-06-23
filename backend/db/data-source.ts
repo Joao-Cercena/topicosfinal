@@ -1,7 +1,7 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { OngsEntity } from 'src/ongs/ongs.entity';
-import { SetorEntity } from 'src/setor/setor.entity';
 import { DoadorEntity } from 'src/doador/doador.entity';
+import { RegistroEntity } from 'src/registro/registro.entity';
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'postgres',
@@ -9,7 +9,7 @@ export const dataSourceOptions: DataSourceOptions = {
     username: 'postgres',
     password: 'admin',
     port: 5432,
-    entities: [OngsEntity, SetorEntity, DoadorEntity],
+    entities: [OngsEntity, DoadorEntity, RegistroEntity],
     migrations: ['dist/db/migration/*.js'],
 }
 

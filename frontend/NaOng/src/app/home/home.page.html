@@ -46,8 +46,6 @@
   <ion-list *ngIf="mestre">
     <ion-item *ngFor="let ong of listOng" (click)="editaOng(ong.id)">
       <ion-label style="border: 1px solid blue; white-space: normal;      word-wrap: break-word;">
-        Código: {{ ong.id }}
-        <br>
         Nome: {{ ong.nome }}
         <br>
         Endereço: {{ ong.endereco }}
