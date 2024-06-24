@@ -86,10 +86,6 @@ import {
 
     
     private async validateOngsCNPJ(cnpj: string){
-  
-      if (cnpj.length < 14) {
-        throw new BadRequestException('O CNPJ deve ter 14 caracteres!');
-      }
 
       const existingOng = await this.ongsRepository.findOne({ where: { cnpj } });
       if (existingOng) {
