@@ -69,6 +69,11 @@ import {
   
       return this.registroRepository.save(registro);
     }
+    private validateEmail(email: string): boolean {
+      // Expressão regular simples para validação de e-mail
+      const emailRegex = /\S+@\S+\.\S+/;
+      return emailRegex.test(email);
+    }
   
     private async  validateRegistro(registro: RegistroEntity | RegistroDto) {
       // await this.validateRegistroCNPJ(registro.cnpj);
@@ -76,34 +81,7 @@ import {
       // await this.validateRegistroEmail(registro.email);
     }
   
-
-    // private async validateRegistroNome(nome: string) {
-    //   const existingRegistro = await  this.registroRepository.findOne({ where: { nome } });
-    //   if (existingRegistro) {
-    //     throw new BadRequestException('Uma Registor com esse nome já existe.');
-    //   }
-    // }
+  }
 
     
-    // private async validateRegistroCNPJ(cnpj: string){
-  
-    //   if (cnpj.length < 14) {
-    //     throw new BadRequestException('O CNPJ deve ter 14 caracteres!');
-    //   }
-
-    //   const existingRegistro = await this.registroRepository.findOne({ where: { cnpj } });
-    //   if (existingRegistro) {
-    //     throw new BadRequestException('Uma Registro com esse CNPJ já existe.');
-    //   }
-    // }
     
-    
-    // private async validateRegistroEmail(email: string) {
-    //   const existingRegistro =  await this.registroRepository.findOne({ where: { email } });
-    //   if (existingRegistro) {
-    //     throw new BadRequestException('Um cadastro com esse e-mail já existe.');
-    //   }
-    // }
-    
-    
-}

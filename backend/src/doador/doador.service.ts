@@ -87,10 +87,51 @@ export class DoadorService {
     }
   }
 
+
   private validateCPF(cpf: string): void {
-    const cpfRegex = /^\d{11}$/;
-    if (!cpfRegex.test(cpf)) {
+    // Remove caracteres não numéricos
+    cpf = cpf.replace(/[^\d]/g, '');
+
+    if (cpf.length !== 11) {
+      throw new BadRequestException('O CPF deve ter exatamente 11 dígitos.');
+    }
+
+    // Verifica se todos os dígitos são iguais
+    if (/^(\d)\1{10}$/.test(cpf)) {
+      throw new BadRequestException('O CPF é inválido.');
+    }
+
+    // Validação dos dígitos verificadores
+    let sum;
+    let remainder;
+
+    sum = 0;
+    for (let i = 1; i <= 9; i++) {
+      sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) {
+      remainder = 0;
+    }
+
+    if (remainder !== parseInt(cpf.substring(9, 10))) {
+      throw new BadRequestException('O CPF é inválido.');
+    }
+
+    sum = 0;
+    for (let i = 1; i <= 10; i++) {
+      sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) {
+      remainder = 0;
+    }
+
+    if (remainder !== parseInt(cpf.substring(10, 11))) {
       throw new BadRequestException('O CPF é inválido.');
     }
   }
+
 }
