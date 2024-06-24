@@ -97,6 +97,11 @@ $ ionic serve
 
 O aplicativo estará disponível em http://localhost:8100.
 
+## Usuario Mestre
+No projeto a permissões somente para o usuario mestre, como fazer o CRUD das Ongs.
+
+Para criar o usuario mestre basta cadastrar um usuario normal e alterar manualmente no banco de dados a coluna mestre para um valor diferente de nulo. 
+
 ## Suporte NestJs
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).

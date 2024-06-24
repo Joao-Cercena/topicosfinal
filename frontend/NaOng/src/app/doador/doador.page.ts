@@ -118,15 +118,26 @@ export class DoadorPage {
 
       if (this.idRecebido < 1) {
         // Se idRecebido for menor que 1, cadastra um novo doador
-        console.log("entrou no front");
-        console.log(novoDoador);
         this.http.post('http://localhost:3000/doadores', novoDoador).subscribe(
           (data) => {
-            console.log('Doador cadastrado com sucesso:', data);
+            // console.log('Doador cadastrado com sucesso:', data);
+            this.alertController.create({
+              header: 'AVISO!',
+              message: 'Doador cadastrado com sucesso!',
+              buttons: ['OK']
+            }).then(alert => {
+              alert.present();
+            });
             this.navCtrl.navigateBack('login'); // Redireciona para a página 'home' após o cadastro
           },
           (error) => {
-            console.error('Erro ao cadastrar doador:', error);
+            this.alertController.create({
+              header: 'AVISO!',
+              message: error['error']['message'],
+              buttons: ['OK']
+            }).then(alert => {
+              alert.present();
+            });
           }
         );
       } else {

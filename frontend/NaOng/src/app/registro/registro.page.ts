@@ -91,7 +91,13 @@ export class RegistroPage {
             this.showHome();
           },
           (error) => {
-            console.error('Erro ao cadastrar registro:', error);
+            this.alertController.create({
+              header: 'AVISO!',
+              message: error['error']['message'],
+              buttons: ['OK']
+            }).then(alert => {
+              alert.present();
+            });
           }
         );
       } else {
